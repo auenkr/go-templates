@@ -20,7 +20,8 @@ func NewConfig() *Config {
 
 	DatabaseConnectionString := getEnv("DB_URL", "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable")
 	Port := getEnv("PORT", "6969")
-	Environment := getEnv("ENV", "dev")
+	// prod
+	Environment := getEnv("ENVIRONMENT", "dev")
 
 	return &Config{
 		DatabaseConnectionString: DatabaseConnectionString,
