@@ -8,6 +8,14 @@ This repo contains a collection of Go templates for different use cases. It is i
 
 ## Usage
 
+Prerequisites:
+
+- gonew CLI installed.
+
+```sh
+go install golang.org/x/tools/cmd/gonew@latest
+```
+
 Clone a template into a new module:
 
 ```sh

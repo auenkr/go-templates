@@ -1,0 +1,26 @@
+package clients
+
+import (
+	"context"
+
+	"github.com/auenkr/go-templates/connect-server/gen/db"
+	"github.com/auenkr/go-templates/connect-server/pkg/config"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"go.uber.org/fx"
+)
+
+func NewDBQueries(ctx context.Context, cfg *config.Config, lc fx.Lifecycle) (*db.Queries, error) {
+	pool, err := pgxpool.New(ctx, cfg.DatabaseConnectionString)
+	if err != nil {
+		return nil, err
+	}
+
+	lc.Append(fx.Hook{
+		OnStop: func(ctx context.Context) error {
+			pool.Close()
+			return nil
+		},
+	})
+
+	return db.New(pool), nil
+}

@@ -1,0 +1,16 @@
+version: "2"
+rules:
+  # Prefer soft deletes over hard deletes
+  - name: "no-delete"
+    message: "DELETE statements are not allowed"
+    rule: |
+      query.sql.contains("DELETE")
+sql:
+  - engine: "postgresql"
+    schema: "db/migration/"
+    queries: "db/query/"
+    gen:
+      go:
+        package: "db"
+        out: "gen/db"
+        sql_package: "pgx/v5"
