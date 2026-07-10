@@ -21,5 +21,18 @@ ADDR=:3000 go run .
 ## Use With gonew
 
 ```sh
-gonew github.com/AuenKr/go-templates/simple-http-health github.com/you/new-service
+gonew github.com/auenkr/go-templates/simple-http-health github.com/you/new-service ./new-service
+```
+
+Then run it:
+
+```sh
+cd new-service
+go run .
+```
+
+Test the health endpoint:
+
+```sh
+curl http://localhost:8080/healthz
 ```

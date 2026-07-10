@@ -11,12 +11,31 @@ This repo contains a collection of Go templates for different use cases. It is i
 Clone a template into a new module:
 
 ```sh
-gonew github.com/AuenKr/go-templates/simple-http-health github.com/you/new-service
+gonew github.com/auenkr/go-templates/<template-to-clone> <your-module-path> ./<clone-dir-path>
 ```
 
-Then run it:
+## Example
 
 ```sh
-cd new-service
+gonew github.com/auenkr/go-templates/simple-http-health github.com/auenkr/tmp-health-test ./http-server
+
+cd http-server
 go run .
 ```
+
+Test the health endpoint:
+
+```sh
+curl http://localhost:8080/healthz
+```
+
+Expected response:
+
+```json
+{"status":"ok"}
+```
+
+## Notes
+
+- `<your-module-path>` should be a valid Go module path, such as `github.com/you/service`.
+- `gonew` expects the new module path to contain a dot, for example `github.com/you/service` or `example.com/service`.
