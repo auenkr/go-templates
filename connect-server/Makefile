@@ -12,6 +12,9 @@ GOOSE_MIGRATION_DIR := db/migration
 
 init:
 	grep -rl '\$${MODULE}' . --exclude=Makefile | xargs perl -pi -e 's|\$${MODULE}|$(MODULE)|g'
+	sqlc generate
+	buf generate
+	go mod tidy
 
 db-migration-up:
 	goose -dir $(GOOSE_MIGRATION_DIR) $(GOOSE_DRIVER) "$(GOOSE_DBSTRING)" up
