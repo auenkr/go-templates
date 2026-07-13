@@ -3,7 +3,7 @@ package reflection
 
 import (
 	"connectrpc.com/grpcreflect"
-	"github.com/auenkr/go-templates/connect-server/pkg/server"
+	"github.com/auenkr/go-templates/server/pkg/server"
 	"go.uber.org/fx"
 )
 

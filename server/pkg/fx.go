@@ -2,7 +2,7 @@
 package pkgfx
 
 import (
-	"github.com/auenkr/go-templates/connect-server/pkg/config"
+	"github.com/auenkr/go-templates/server/pkg/config"
 	"go.uber.org/fx"
 )
 

@@ -3,8 +3,8 @@ package clients
 import (
 	"context"
 
-	"github.com/auenkr/go-templates/connect-server/gen/db"
-	"github.com/auenkr/go-templates/connect-server/pkg/config"
+	"github.com/auenkr/go-templates/server/gen/db"
+	"github.com/auenkr/go-templates/server/pkg/config"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"go.uber.org/fx"
 )

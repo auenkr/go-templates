@@ -2,7 +2,7 @@
 package servicesfx
 
 import (
-	"github.com/auenkr/go-templates/connect-server/internal/services/greet"
+	"github.com/auenkr/go-templates/server/internal/services/greet"
 	"go.uber.org/fx"
 )
 

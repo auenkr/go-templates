@@ -2,10 +2,10 @@
 package internalfx
 
 import (
-	clientsfx "github.com/auenkr/go-templates/connect-server/internal/clients"
-	interceptorsfx "github.com/auenkr/go-templates/connect-server/internal/interceptors"
-	reflectionfx "github.com/auenkr/go-templates/connect-server/internal/reflection"
-	servicesfx "github.com/auenkr/go-templates/connect-server/internal/services"
+	clientsfx "github.com/auenkr/go-templates/server/internal/clients"
+	interceptorsfx "github.com/auenkr/go-templates/server/internal/interceptors"
+	reflectionfx "github.com/auenkr/go-templates/server/internal/reflection"
+	servicesfx "github.com/auenkr/go-templates/server/internal/services"
 	"go.uber.org/fx"
 )
 
