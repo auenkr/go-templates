@@ -11,7 +11,8 @@ GOOSE_MIGRATION_DIR := db/migration
 .PHONY: init migrate-up migrate-down
 
 init:
-	grep -rl '\$${MODULE}' . --exclude=Makefile | xargs perl -pi -e 's|\$${MODULE}|$(MODULE)|g'
+	# Remove all references to ${MODULE} in all config files
+	grep -rl '\$${MODULE}' . --exclude=Makefile --exclude='*.go' | xargs perl -pi -e 's|\$${MODULE}|$(MODULE)|g'
 	buf dep update
 	buf generate .
 	sqlc generate
