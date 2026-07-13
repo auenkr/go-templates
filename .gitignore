@@ -1,1 +1,6 @@
 temp/
+
+# server
+gen/
+go.sum
+buf.lock
