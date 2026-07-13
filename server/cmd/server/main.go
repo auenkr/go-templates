@@ -47,9 +47,11 @@ func StartServer(in StartServerParams) {
 		mux.Handle(handler.Path, handler.Handler)
 	}
 
-	for _, handler := range in.ReflectionHandler {
-		in.Logger.Info("Registering reflection service", zap.String("service", handler.ServiceName))
-		mux.Handle(handler.Path, handler.Handler)
+	if in.Config.Environment != config.PROD_ENVIRONMENT {
+		for _, handler := range in.ReflectionHandler {
+			in.Logger.Info("Registering reflection service", zap.String("service", handler.ServiceName))
+			mux.Handle(handler.Path, handler.Handler)
+		}
 	}
 
 	protocol := &http.Protocols{}

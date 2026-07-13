@@ -7,6 +7,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+const PROD_ENVIRONMENT = "prod"
+
 type Config struct {
 	DatabaseConnectionString string
 	Port                     string
