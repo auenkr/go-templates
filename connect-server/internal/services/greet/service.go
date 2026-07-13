@@ -7,8 +7,8 @@ import (
 
 	"connectrpc.com/connect"
 	"connectrpc.com/validate"
-	greetv1 "github.com/auenkr/go-templates/connect-server/gen/proto/greet/v1"
-	"github.com/auenkr/go-templates/connect-server/gen/proto/greet/v1/greetv1connect"
+	greetv1 "github.com/auenkr/go-templates/connect-server/gen/proto/v1"
+	"github.com/auenkr/go-templates/connect-server/gen/proto/v1/greetv1connect"
 	"github.com/auenkr/go-templates/connect-server/pkg/server"
 	"go.uber.org/fx"
 )

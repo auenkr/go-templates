@@ -12,8 +12,9 @@ GOOSE_MIGRATION_DIR := db/migration
 
 init:
 	grep -rl '\$${MODULE}' . --exclude=Makefile | xargs perl -pi -e 's|\$${MODULE}|$(MODULE)|g'
+	buf dep update
+	buf generate .
 	sqlc generate
-	buf generate
 	go mod tidy
 
 db-migration-up:
