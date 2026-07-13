@@ -15,7 +15,7 @@ managed:
   enabled: true
   override:
     - file_option: go_package_prefix
-      value: github.com/auenkr/go-templates/connect-server/gen
+      value: ${MODULE}/gen
   disable:
     - file_option: go_package
       module: buf.build/bufbuild/protovalidate
