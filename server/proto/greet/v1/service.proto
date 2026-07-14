@@ -6,7 +6,7 @@ package greet.v1;
 import "buf/validate/validate.proto";
 
 service GreetService {
-  rpc Greet(GreetRequest) returns (GreetResponse) {}
+  rpc Greet(GreetRequest) returns (GreetResponse);
 }
 
 message GreetRequest {

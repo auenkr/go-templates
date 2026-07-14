@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func NewLatencyLoggerInterceptor(logger zap.Logger) connect.UnaryInterceptorFunc {
+func NewLatencyLoggerInterceptor(logger *zap.Logger) connect.UnaryInterceptorFunc {
 	return func(next connect.UnaryFunc) connect.UnaryFunc {
 		return func(
 			ctx context.Context,

@@ -12,7 +12,7 @@ var Module = fx.Module(
 	// GreetService
 	fx.Provide(
 		fx.Annotate(
-			greet.NewGreetService,
+			greet.NewService,
 			fx.ResultTags(`group:"service-handlers"`),
 		),
 	),
