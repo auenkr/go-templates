@@ -13,7 +13,8 @@ GOOSE_MIGRATION_DIR := db/migration
 
 init:
 	# Remove all references to ${MODULE} in all config files
-	grep -rl '\$${MODULE}' . --exclude=Makefile --exclude='*.go' | xargs perl -pi -e 's|\$${MODULE}|$(MODULE)|g'
+	find . -type f ! -name 'Makefile' ! -name '*.go' -exec sh -c \
+		'sed '\''s|\$${MODULE}|$(MODULE)|g'\'' "$$1" > "$$1.tmp" && mv "$$1.tmp" "$$1"' _ {} \;
 	buf dep update
 	buf generate .
 	sqlc generate
