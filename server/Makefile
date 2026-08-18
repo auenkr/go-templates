@@ -13,7 +13,7 @@ GOOSE_MIGRATION_DIR := db/migration
 
 init:
 	# Remove all references to ${MODULE} in all config files
-	find . -type f ! -name 'Makefile' ! -name '*.go' -exec sh -c \
+	find . \( -path './.git' -o -path './bin' -o -path './data' \) -prune -o -type f ! -name 'Makefile' ! -name '*.go' -exec sh -c \
 		'sed '\''s|\$${MODULE}|$(MODULE)|g'\'' "$$1" > "$$1.tmp" && mv "$$1.tmp" "$$1"' _ {} \;
 	buf dep update
 	buf generate .
