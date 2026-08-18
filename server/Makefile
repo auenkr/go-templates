@@ -1,4 +1,5 @@
 MODULE := $(shell go list -m)
+PLATFORM := linux/$(shell go env GOARCH)
 
 # Env loading from .env file
 -include .env
@@ -8,7 +9,7 @@ GOOSE_DRIVER := postgres
 GOOSE_DBSTRING := $(DB_URL)
 GOOSE_MIGRATION_DIR := db/migration
 
-.PHONY: init migrate-up migrate-down
+.PHONY: init generate run build build-image db-migration-status db-migration-up db-migration-down
 
 init:
 	# Remove all references to ${MODULE} in all config files
@@ -18,14 +19,24 @@ init:
 	sqlc generate
 	go mod tidy
 
-db-migration-up:
-	goose -dir $(GOOSE_MIGRATION_DIR) $(GOOSE_DRIVER) "$(GOOSE_DBSTRING)" up
-
-db-migration-down:
-	goose -dir $(GOOSE_MIGRATION_DIR) $(GOOSE_DRIVER) "$(GOOSE_DBSTRING)" down
+generate:
+	sqlc generate
+	buf generate .
 
 run:
 	go run cmd/server/main.go
 
 build:
 	go build -o bin/server cmd/server/main.go
+
+build-image:
+	docker build --platform ${PLATFORM} -f ./deploy/Dockerfile .
+
+db-migration-up:
+	goose up
+
+db-migration-down:
+	goose down
+
+db-migration-status:
+	goose status
