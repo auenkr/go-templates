@@ -1,4 +1,4 @@
-FROM golang:1.26.3-alpine AS builder
+FROM golang:1.26 AS builder
 
 WORKDIR /app
 
@@ -6,11 +6,11 @@ COPY go.mod ./
 RUN go mod download
 
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /bin/server ./cmd/server
+RUN CGO_ENABLED=0 go build -o /bin/server ./cmd/server
 
-FROM alpine:3.22
+FROM alpine:latest
 
-RUN addgroup -S app && adduser -S -G app app
+RUN addgroup -S server && adduser -S -G server app
 
 WORKDIR /app
 
