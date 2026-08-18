@@ -9,8 +9,8 @@ import (
 	"go.uber.org/fx"
 )
 
-func NewDBQueries(ctx context.Context, cfg *config.Config, lc fx.Lifecycle) (*db.Queries, error) {
-	pool, err := pgxpool.New(ctx, cfg.DatabaseConnectionString)
+func NewDBQueries(cfg *config.Config, lc fx.Lifecycle) (*db.Queries, error) {
+	pool, err := pgxpool.New(context.Background(), cfg.DatabaseConnectionString)
 	if err != nil {
 		return nil, err
 	}
