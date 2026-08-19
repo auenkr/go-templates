@@ -2,7 +2,7 @@
 package servicesfx
 
 import (
-	"github.com/auenkr/go-templates/server/internal/services/greet"
+	"github.com/auenkr/go-templates/server/internal/services/greet_service"
 	"go.uber.org/fx"
 )
 
@@ -12,7 +12,7 @@ var Module = fx.Module(
 	// GreetService
 	fx.Provide(
 		fx.Annotate(
-			greet.NewService,
+			greet_service.NewService,
 			fx.ResultTags(`group:"service-handlers"`),
 		),
 	),
