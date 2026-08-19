@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"connectrpc.com/connect"
+	greetv1 "github.com/auenkr/go-templates/server/gen/proto/greet/v1"
 	"github.com/auenkr/go-templates/server/gen/proto/greet/v1/greetv1connect"
 )
 
